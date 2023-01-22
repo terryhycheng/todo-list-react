@@ -1,6 +1,7 @@
-describe('template spec', () => {
-  it('passes', () => {
-    cy.visit('http://localhost:5173/');
+describe('My first test', () => {
+  it('contains a title', () => {
+    cy.visit('/');
+    cy.contains('to-do');
   });
 });
 
