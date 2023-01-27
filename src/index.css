@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .button {
+    @apply bg-slate-100 w-full text-center p-4 text-slate-300 font-light cursor-pointer hover:button-active transition-all;
+  }
+
+  .button-active {
+    @apply bg-[#BCEBF3] text-[#37A7BB];
+  }
+}
