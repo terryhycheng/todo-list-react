@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { ReactComponent as DeleteIcon } from '../assets/delete.svg';
 
 type PropsType = {

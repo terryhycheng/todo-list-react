@@ -20,7 +20,7 @@
     "src",
     ".eslintrc.cjs",
     "vite.config.ts",
-    "cypress",
+    "cypress/e2e",
     "cypress.config.ts",
     "tailwind.config.cjs"
   ],
