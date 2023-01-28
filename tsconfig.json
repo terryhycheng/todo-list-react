@@ -22,7 +22,8 @@
     "vite.config.ts",
     "cypress/e2e",
     "cypress.config.ts",
-    "tailwind.config.cjs"
+    "tailwind.config.cjs",
+    "types"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

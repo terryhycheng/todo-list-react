@@ -1,12 +1,25 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import { ReactComponent as AddIcon } from '../assets/add.svg';
+import { TodoType } from '../../types';
 
-function InputBar() {
+type PropsType = {
+  saveToStorage: (list: TodoType[]) => void;
+  loadStorage: () => TodoType[];
+};
+
+function InputBar({ saveToStorage, loadStorage }: PropsType) {
   const [inputs, setInputs] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
+    const updatedTodos = [
+      ...loadStorage(),
+      { id: uuidv4(), task: inputs, isDone: false },
+    ];
+    saveToStorage(updatedTodos);
+    setInputs('');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

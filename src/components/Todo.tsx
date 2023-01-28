@@ -1,14 +1,13 @@
-import { useState } from 'react';
+import { TodoType } from '../../types';
 import { ReactComponent as DeleteIcon } from '../assets/delete.svg';
 
-type PropsType = {
-  task: string;
-};
+interface PropsType extends TodoType {
+  handleDelete: (id: string) => void;
+  handleDone: (id: string, status: boolean) => void;
+}
 
-function Todo({ task }: PropsType) {
-  const [isDone, setIsDone] = useState(false);
-
-  const handleChange = () => setIsDone(!isDone);
+function Todo({ id, task, isDone, handleDelete, handleDone }: PropsType) {
+  const handleChange = () => handleDone(id, !isDone);
 
   return (
     <div
@@ -32,7 +31,11 @@ function Todo({ task }: PropsType) {
       >
         {task}
       </div>
-      <DeleteIcon height="28px" className="cursor-pointer" />
+      <DeleteIcon
+        height="28px"
+        className="cursor-pointer"
+        onClick={() => handleDelete(id)}
+      />
     </div>
   );
 }
