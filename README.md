@@ -40,7 +40,7 @@ This is a simple React project to practise all types of testing which are unit t
 
 ## Component Design Diagram
 
-![design_diagram](public/diagram.png)
+![design_diagram](public/diagram_rev.png)
 
 ## Getting Started
 

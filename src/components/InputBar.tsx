@@ -14,12 +14,14 @@ function InputBar({ saveToStorage, loadStorage }: PropsType) {
 
   const handleSubmit = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
-    const updatedTodos = [
-      ...loadStorage(),
-      { id: uuidv4(), task: inputs, isDone: false },
-    ];
-    saveToStorage(updatedTodos);
-    setInputs('');
+    if (inputs !== '') {
+      const updatedTodos = [
+        ...loadStorage(),
+        { id: uuidv4(), task: inputs, isDone: false },
+      ];
+      saveToStorage(updatedTodos);
+      setInputs('');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +31,7 @@ function InputBar({ saveToStorage, loadStorage }: PropsType) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex gap-4 items-center justify-center mt-8"
+      className="flex gap-4 items-center justify-center mt-6 sm:mt-8"
     >
       <input
         type="text"

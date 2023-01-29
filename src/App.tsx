@@ -6,9 +6,13 @@ import { ReactComponent as GitHubLogo } from './assets/github.svg';
 import InputBar from './components/InputBar';
 import TodoList from './components/TodoList';
 import { TodoType } from '../types';
+import FilterButtons from './components/FilterButtons';
 
 function App() {
   const [todos, setTodos] = useState<TodoType[]>([]);
+  const [category, setCategory] = useState('all');
+
+  const categories = ['all', 'non-done', 'done'];
 
   // saves the latest todo list to localStorage & calls an refresh
   const saveToStorage = (list: TodoType[]) => {
@@ -27,35 +31,40 @@ function App() {
 
   return (
     <div className="bg-gradient-to-t from-[#3A7EA4] to-[#37A5B4] h-[100vh] flex items-center justify-center">
-      <div className="bg-white rounded-2xl w-full max-w-[700px] overflow-hidden mx-4">
+      <div className="bg-white sm:rounded-2xl w-full max-w-[700px] overflow-hidden h-full sm:h-auto sm:mx-4 flex flex-col">
         {/* Header */}
-        <header className="bg-[#EFFAFC] p-10">
+        <header className="bg-[#EFFAFC] p-6 sm:p-10">
           <div className="flex gap-2 items-center justify-center">
             <Logo height="40px" />
-            <h1 className="text-center text-4xl font-bold">Todo List</h1>
+            <h1 className="text-center text-2xl sm:text-4xl font-bold">
+              Todo List
+            </h1>
           </div>
           <InputBar saveToStorage={saveToStorage} loadStorage={loadStorage} />
         </header>
-        <main>
+        <main className="flex-1">
           {/* Buttons */}
           <div className="flex justify-around">
-            <button type="button" className="button button-active">
-              All
-            </button>
-            <button type="button" className="button">
-              non-done
-            </button>
-            <button type="button" className="button">
-              done
-            </button>
+            {categories.map((category_name) => (
+              <FilterButtons
+                key={category_name}
+                name={category_name}
+                category={category}
+                setCategory={setCategory}
+              />
+            ))}
           </div>
           {/* Todo List */}
           <div className="max-h-[50vh] overflow-auto">
-            <TodoList todos={todos} saveToStorage={saveToStorage} />
+            <TodoList
+              todos={todos}
+              saveToStorage={saveToStorage}
+              category={category}
+            />
           </div>
         </main>
         {/* Footer */}
-        <footer className="flex justify-between items-center p-8 border-t">
+        <footer className="flex justify-between items-center p-6 sm:p-8 border-t">
           <p className="uppercase tracking-widest text-xs">
             designed & built by
           </p>

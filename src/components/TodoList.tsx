@@ -4,15 +4,16 @@ import Todo from './Todo';
 type PropsType = {
   todos: TodoType[];
   saveToStorage: (todo: TodoType[]) => void;
+  category: string;
 };
 
-function TodoList({ todos, saveToStorage }: PropsType) {
-  // filter out a certain todo
+function TodoList({ todos, saveToStorage, category }: PropsType) {
+  // filters out a certain todo
   const handleDelete = (id: string) => {
     saveToStorage(todos.filter((todo) => todo.id !== id));
   };
 
-  // update certain todo with input
+  // updates certain todo with input
   const handleDone = (id: string, status: boolean) => {
     const updatedTodos = todos.map((each_todo) => ({
       id: each_todo.id,
@@ -22,14 +23,29 @@ function TodoList({ todos, saveToStorage }: PropsType) {
     saveToStorage(updatedTodos);
   };
 
+  // filters the list by categories
+  const filter = (list: TodoType[]): TodoType[] => {
+    let filteredList = [];
+    if (category === 'non-done') {
+      filteredList = list.filter((item) => item.isDone === false);
+    } else if (category === 'done') {
+      filteredList = list.filter((item) => item.isDone === true);
+    } else {
+      filteredList = list;
+    }
+    return filteredList;
+  };
+
+  const filteredList: TodoType[] = filter(todos);
+
   return (
-    <div className="min-h-[40vh] p-8 flex flex-col gap-4">
-      {!todos.length && (
+    <div className="min-h-[40vh] p-6 sm:p-8 flex flex-col gap-4">
+      {!filteredList.length && (
         <div className="flex justify-center items-center text-center m-auto font-light">
-          The list is empty. Please add a new todo.
+          This is an empty list.
         </div>
       )}
-      {todos.map(({ id, task, isDone }) => (
+      {filteredList.map(({ id, task, isDone }) => (
         <Todo
           key={id}
           id={id}
