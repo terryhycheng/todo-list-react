@@ -31,6 +31,7 @@ function InputBar({ saveToStorage, loadStorage }: PropsType) {
   return (
     <form
       onSubmit={handleSubmit}
+      data-testid="input-bar"
       className="flex gap-4 items-center justify-center mt-6 sm:mt-8"
     >
       <input

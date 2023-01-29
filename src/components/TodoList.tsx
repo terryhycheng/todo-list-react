@@ -39,7 +39,10 @@ function TodoList({ todos, saveToStorage, category }: PropsType) {
   const filteredList: TodoType[] = filter(todos);
 
   return (
-    <div className="min-h-[40vh] p-6 sm:p-8 flex flex-col gap-4">
+    <div
+      data-testid="todo-list"
+      className="min-h-[40vh] p-6 sm:p-8 flex flex-col gap-4"
+    >
       {!filteredList.length && (
         <div className="flex justify-center items-center text-center m-auto font-light">
           This is an empty list.
