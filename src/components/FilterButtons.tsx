@@ -6,7 +6,9 @@ type PropsType = {
 
 function FilterButtons({ name, category, setCategory }: PropsType) {
   const handleClick = () => {
-    setCategory(name);
+    if (category !== name) {
+      setCategory(name);
+    }
   };
 
   return (

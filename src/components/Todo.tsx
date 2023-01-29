@@ -11,11 +11,13 @@ function Todo({ id, task, isDone, handleDelete, handleDone }: PropsType) {
 
   return (
     <div
+      aria-label="todo"
       className={`border p-6 rounded-lg flex gap-6 items-center ${
         isDone && 'bg-[#EFFCFE] border-[#EFFCFE]'
       }`}
     >
       <button
+        aria-label="circle-button"
         className={`border w-6 h-6 rounded-full ${
           isDone && 'bg-[#00D8FF] border-none'
         }`}
@@ -25,7 +27,7 @@ function Todo({ id, task, isDone, handleDelete, handleDone }: PropsType) {
         {}
       </button>
       <div
-        data-testid="text-container"
+        aria-label="text-container"
         className={`flex-1 font-thin text-lg capitalize ${
           isDone && 'text-[#D3D3D3] line-through'
         }`}
@@ -33,7 +35,8 @@ function Todo({ id, task, isDone, handleDelete, handleDone }: PropsType) {
         {task}
       </div>
       <DeleteIcon
-        data-testid="delete-icon"
+        role="button"
+        aria-label="delete-icon"
         height="28px"
         className="cursor-pointer"
         onClick={() => handleDelete(id)}

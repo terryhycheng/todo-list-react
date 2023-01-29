@@ -1,6 +1,6 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import { screen, render, cleanup } from '@testing-library/react';
-import App from '../App';
+import App from './App';
 
 afterEach(() => cleanup());
 
@@ -21,7 +21,7 @@ describe('App', () => {
 
   it('should render an input bar component', () => {
     render(<App />);
-    expect(screen.getByTestId('input-bar')).toBeInTheDocument();
+    expect(screen.getByRole('form')).toBeInTheDocument();
   });
 
   it('should render the list of todos', () => {

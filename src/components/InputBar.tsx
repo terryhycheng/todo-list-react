@@ -30,18 +30,24 @@ function InputBar({ saveToStorage, loadStorage }: PropsType) {
 
   return (
     <form
+      aria-label="form"
       onSubmit={handleSubmit}
-      data-testid="input-bar"
       className="flex gap-4 items-center justify-center mt-6 sm:mt-8"
     >
       <input
         type="text"
+        aria-label="input-field"
         placeholder="add a new to-do item"
         className="flex-1 bg-[#E0F4F8] p-5 rounded-lg"
         value={inputs}
         onChange={handleChange}
       />
-      <AddIcon type="submit" className="cursor-pointer" />
+      <AddIcon
+        aria-label="add-icon"
+        role="button"
+        type="submit"
+        className="cursor-pointer"
+      />
     </form>
   );
 }

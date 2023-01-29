@@ -1,6 +1,6 @@
 import { describe, it, expect, afterEach, vi } from 'vitest';
 import { render, cleanup, fireEvent } from '@testing-library/react';
-import Todo from '../components/Todo';
+import Todo from './Todo';
 
 afterEach(() => cleanup());
 
@@ -10,7 +10,7 @@ describe('Todo', () => {
     const fakeHandleDelete = vi.fn();
     const fakeHandleDone = vi.fn();
     const todo = { id: '123-456-789', task: 'wash dishes', isDone: false };
-    const { getByRole, getByTestId } = render(
+    const { getByRole, getByLabelText } = render(
       <Todo
         id={todo.id}
         task={todo.task}
@@ -19,9 +19,9 @@ describe('Todo', () => {
         handleDone={fakeHandleDone}
       />
     );
-    const circleButton = getByRole('button');
-    const deleteIcon = getByTestId('delete-icon');
-    const textContainer = getByTestId('text-container');
+    const circleButton = getByRole('button', { name: /circle-button/i });
+    const deleteIcon = getByRole('button', { name: /delete-icon/i });
+    const textContainer = getByLabelText('text-container');
 
     // ACT
     fireEvent.click(circleButton);
@@ -43,7 +43,7 @@ describe('Todo', () => {
     const fakeHandleDelete = vi.fn();
     const fakeHandleDone = vi.fn();
     const todo = { id: '123-456-789', task: 'wash dishes', isDone: true };
-    const { getByRole, getByTestId } = render(
+    const { getByRole, getByLabelText } = render(
       <Todo
         id={todo.id}
         task={todo.task}
@@ -52,9 +52,9 @@ describe('Todo', () => {
         handleDone={fakeHandleDone}
       />
     );
-    const circleButton = getByRole('button');
-    const deleteIcon = getByTestId('delete-icon');
-    const textContainer = getByTestId('text-container');
+    const circleButton = getByRole('button', { name: /circle-button/i });
+    const deleteIcon = getByRole('button', { name: /delete-icon/i });
+    const textContainer = getByLabelText('text-container');
 
     // ACT
     fireEvent.click(circleButton);
