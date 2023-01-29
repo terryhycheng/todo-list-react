@@ -73,11 +73,12 @@ function App() {
           </p>
           <div className="flex font-bold gap-3 text-base">
             <a
+              data-testid="github-link"
               href="https://github.com/terryhycheng"
               target="_blank"
               rel="noreferrer"
             >
-              <GitHubLogo height="26px" />
+              <GitHubLogo data-testid="github-logo" height="26px" />
             </a>
             terryhycheng
           </div>

@@ -35,4 +35,16 @@ describe('App', () => {
     expect(screen.getByTestId('main')).toBeInTheDocument();
     expect(screen.getByTestId('footer')).toBeInTheDocument();
   });
+
+  it('should have a footer with correct content', () => {
+    const { getByTestId } = render(<App />);
+    const footer = getByTestId('footer');
+    const anchor = getByTestId('github-link');
+    const githubLogo = getByTestId('github-logo');
+    expect(footer).toHaveTextContent('designed & built by');
+    expect(footer).toHaveTextContent('terryhycheng');
+    expect(anchor).toHaveAttribute('href', 'https://github.com/terryhycheng');
+    expect(anchor).toHaveAttribute('target', '_blank');
+    expect(githubLogo).toBeInTheDocument();
+  });
 });

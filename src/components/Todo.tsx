@@ -25,6 +25,7 @@ function Todo({ id, task, isDone, handleDelete, handleDone }: PropsType) {
         {}
       </button>
       <div
+        data-testid="text-container"
         className={`flex-1 font-thin text-lg capitalize ${
           isDone && 'text-[#D3D3D3] line-through'
         }`}
@@ -32,6 +33,7 @@ function Todo({ id, task, isDone, handleDelete, handleDone }: PropsType) {
         {task}
       </div>
       <DeleteIcon
+        data-testid="delete-icon"
         height="28px"
         className="cursor-pointer"
         onClick={() => handleDelete(id)}
