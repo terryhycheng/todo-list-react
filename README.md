@@ -1,6 +1,6 @@
 # Todo List By React
 
-![demo-preview](public/preview.png)
+![demo-preview](public/preview-todolist.png)
 
 ## Overview
 
@@ -10,6 +10,14 @@ This is a simple React project to practise all types of testing which are unit t
 
 ➡️ Website Demo : [link](https://todo-list-react-sooty-mu.vercel.app/)
 
+**Features:**
+
+- ✅ Add todos to the list
+- ✅ Mark a todo as `done` or `non-done`
+- ✅ Delete a todo
+- ✅ Filter todos by its status of completion
+- ✅ Save the todo list to the browser's `localStorage` so that the user can get the same list next time
+
 ## Table of Contents
 
 - [Todo List By React](#todo-list-by-react)
@@ -18,7 +26,10 @@ This is a simple React project to practise all types of testing which are unit t
   - [User Stories](#user-stories)
   - [Component Design Diagram](#component-design-diagram)
   - [Getting Started](#getting-started)
-  - [Build with](#build-with)
+    - [Run Dev Server](#run-dev-server)
+    - [Run tests](#run-tests)
+    - [Build](#build)
+  - [Dependencies](#dependencies)
 
 ## User Stories
 
@@ -44,16 +55,31 @@ This is a simple React project to practise all types of testing which are unit t
 
 ## Getting Started
 
+### Run Dev Server
+
 Run `yarn dev` to start the dev sever.
 
-## Build with
+### Run tests
 
-- RactJS
-- Cypress
-- TailwindCSS
-- React Testing Library
-- Jestdom
-- Vite
-- Vitest
-- Eslint
-- Prettier
+There are 2 options - `Vitest` and `Cypress` for runing tests.
+
+You can run `yarn test` to test by `Vitest` or `yarn cypress:open` to have an e2e tests by `Cypress`.
+
+To get a coverage report, you can run `yarn coverage`. A folder called `coverage` and reports in `JSON` and `HTML` format will be created in the root folder.
+
+### Build
+
+Run `yarn build` to build the project.
+
+## Dependencies
+
+- ReactJS: 18.2.0
+- Cypress: 12.3.0
+- TailwindCSS: 3.2.4
+- React Testing Library: 13.4.0
+- Jestdom: 21.0.0
+- Vite: 4.0.0
+- Vitest: 0.27.2
+- Eslint: 8.2.0
+- Prettier: 2.8.3
+- uuid: 9.0.0
