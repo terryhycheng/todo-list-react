@@ -17,6 +17,7 @@ This is a simple React project to practise all types of testing which are unit t
 - ✅ Delete a todo
 - ✅ Filter todos by its status of completion
 - ✅ Save the todo list to the browser's `localStorage` so that the user can get the same list next time
+- ✅ 95%+ test coverage by `Vitest` and `Cypress`
 
 ## Table of Contents
 
