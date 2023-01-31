@@ -14,6 +14,7 @@ function FilterButtons({ name, category, setCategory }: PropsType) {
   return (
     <button
       type="button"
+      id={name}
       className={`button ${category === name && 'button-active'} capitalize`}
       onClick={handleClick}
     >
