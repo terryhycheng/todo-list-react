@@ -33,7 +33,7 @@ describe('InputBar', () => {
     const fakeSaveToStorage = vi.fn();
     const fakeLoadStorage = vi.fn(() => []);
 
-    const { getByRole, getByLabelText } = render(
+    const { getByRole, getByLabelText, getByDisplayValue } = render(
       <InputBar
         saveToStorage={fakeSaveToStorage}
         loadStorage={fakeLoadStorage}
@@ -43,14 +43,13 @@ describe('InputBar', () => {
     const input = getByLabelText('input-field');
     const addIcon = getByRole('button', { name: 'add-icon' });
 
-    // ACT
+    // ACT & ASSERT
+    expect(input).toBeInTheDocument();
     fireEvent.change(input, { target: { value: 'wash dishes' } });
     expect(input).toHaveValue('wash dishes');
-    // fireEvent.click(addIcon);
-    // expect(input).toHaveValue('');
-
-    // ASSERT
-    expect(input).toBeInTheDocument();
-    // expect(fakeSaveToStorage).toBeCalled();
+    expect(getByDisplayValue('wash dishes')).toBeInTheDocument();
+    fireEvent.click(addIcon);
+    expect(input).toHaveValue('');
+    expect(fakeSaveToStorage).toBeCalled();
   });
 });

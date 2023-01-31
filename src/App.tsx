@@ -33,16 +33,16 @@ function App() {
     <div className="bg-gradient-to-t from-[#3A7EA4] to-[#37A5B4] h-[100vh] flex items-center justify-center">
       <div className="bg-white sm:rounded-2xl w-full max-w-[700px] overflow-hidden h-full sm:h-auto sm:mx-4 flex flex-col">
         {/* Header */}
-        <header data-testid="header" className="bg-[#EFFAFC] p-6 sm:p-10">
+        <header className="bg-[#EFFAFC] p-6 sm:p-10">
           <div className="flex gap-2 items-center justify-center">
-            <Logo data-testid="react-logo" height="40px" />
+            <Logo aria-label="react-logo" height="40px" />
             <h1 className="text-center text-2xl sm:text-4xl font-bold">
               Todo List
             </h1>
           </div>
           <InputBar saveToStorage={saveToStorage} loadStorage={loadStorage} />
         </header>
-        <main data-testid="main" className="flex-1">
+        <main className="flex-1">
           {/* Buttons */}
           <div className="flex justify-around">
             {categories.map((category_name) => (
@@ -64,21 +64,18 @@ function App() {
           </div>
         </main>
         {/* Footer */}
-        <footer
-          data-testid="footer"
-          className="flex justify-between items-center p-6 sm:p-8 border-t"
-        >
+        <footer className="flex justify-between items-center p-6 sm:p-8 border-t">
           <p className="uppercase tracking-widest text-xs">
             designed & built by
           </p>
           <div className="flex font-bold gap-3 text-base">
             <a
-              data-testid="github-link"
+              aria-label="github-link"
               href="https://github.com/terryhycheng"
               target="_blank"
               rel="noreferrer"
             >
-              <GitHubLogo data-testid="github-logo" height="26px" />
+              <GitHubLogo aria-label="github-logo" height="26px" />
             </a>
             terryhycheng
           </div>

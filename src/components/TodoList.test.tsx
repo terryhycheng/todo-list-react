@@ -19,14 +19,14 @@ describe('Todo List', () => {
     ];
     const category = 'all';
     const fakeSaveToStorage = vi.fn();
-    const { getByTestId } = render(
+    const { getByLabelText } = render(
       <TodoList
         todos={todoData}
         saveToStorage={fakeSaveToStorage}
         category={category}
       />
     );
-    const todoList = getByTestId('todo-list');
+    const todoList = getByLabelText('todo-list');
     const todos = getAllByLabelText(todoList, 'todo');
 
     // ASSERT
@@ -83,14 +83,14 @@ describe('Todo List', () => {
     const todoData: TodoType[] = [];
     const category = 'all';
     const fakeSaveToStorage = vi.fn();
-    const { getByTestId } = render(
+    const { getByLabelText } = render(
       <TodoList
         todos={todoData}
         saveToStorage={fakeSaveToStorage}
         category={category}
       />
     );
-    const todoList = getByTestId('todo-list');
+    const todoList = getByLabelText('todo-list');
 
     // ASSERT
     expect(todoList).toHaveTextContent('This is an empty list.');

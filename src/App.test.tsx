@@ -7,7 +7,7 @@ afterEach(() => cleanup());
 describe('App', () => {
   it('should render the logo and title', () => {
     render(<App />);
-    expect(screen.getByTestId('react-logo')).toBeInTheDocument();
+    expect(screen.getByLabelText('react-logo')).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
       'Todo List'
     );
@@ -22,25 +22,28 @@ describe('App', () => {
   it('should render an input bar component', () => {
     render(<App />);
     expect(screen.getByRole('form')).toBeInTheDocument();
+    expect(
+      screen.getByPlaceholderText('add a new to-do item')
+    ).toBeInTheDocument();
   });
 
   it('should render the list of todos', () => {
     render(<App />);
-    expect(screen.getByTestId('todo-list')).toBeInTheDocument();
+    expect(screen.getByLabelText('todo-list')).toBeInTheDocument();
   });
 
   it('should have header, main and footer tags', () => {
     render(<App />);
-    expect(screen.getByTestId('header')).toBeInTheDocument();
-    expect(screen.getByTestId('main')).toBeInTheDocument();
-    expect(screen.getByTestId('footer')).toBeInTheDocument();
+    expect(screen.getByRole('banner')).toBeInTheDocument();
+    expect(screen.getByRole('main')).toBeInTheDocument();
+    expect(screen.getByRole('contentinfo')).toBeInTheDocument();
   });
 
   it('should have a footer with correct content', () => {
-    const { getByTestId } = render(<App />);
-    const footer = getByTestId('footer');
-    const anchor = getByTestId('github-link');
-    const githubLogo = getByTestId('github-logo');
+    const { getByLabelText, getByRole } = render(<App />);
+    const footer = getByRole('contentinfo');
+    const anchor = getByRole('link', { name: 'github-link' });
+    const githubLogo = getByLabelText('github-logo');
     expect(footer).toHaveTextContent('designed & built by');
     expect(footer).toHaveTextContent('terryhycheng');
     expect(anchor).toHaveAttribute('href', 'https://github.com/terryhycheng');

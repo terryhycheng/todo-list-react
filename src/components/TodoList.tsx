@@ -40,7 +40,7 @@ function TodoList({ todos, saveToStorage, category }: PropsType) {
 
   return (
     <div
-      data-testid="todo-list"
+      aria-label="todo-list"
       className="min-h-[40vh] p-6 sm:p-8 flex flex-col gap-4"
     >
       {!filteredList.length && (

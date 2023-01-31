@@ -42,12 +42,9 @@ function InputBar({ saveToStorage, loadStorage }: PropsType) {
         value={inputs}
         onChange={handleChange}
       />
-      <AddIcon
-        aria-label="add-icon"
-        role="button"
-        type="submit"
-        className="cursor-pointer"
-      />
+      <button type="submit">
+        <AddIcon aria-label="add-icon" className="cursor-pointer" />
+      </button>
     </form>
   );
 }
